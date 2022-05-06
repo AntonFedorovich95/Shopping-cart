@@ -8,3 +8,4 @@ public interface ShoppingServiceInterface {
     Cart addItemsToCart(ArrayList<Integer> items);
     ArrayList<Integer> getItemsListInTheCart();
 }
+
