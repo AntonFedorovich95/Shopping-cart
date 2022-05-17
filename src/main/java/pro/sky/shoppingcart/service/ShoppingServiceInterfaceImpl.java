@@ -2,26 +2,24 @@ package pro.sky.shoppingcart.service;
 
 import pro.sky.shoppingcart.data.Cart;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
-@SessionScope
 public class ShoppingServiceInterfaceImpl implements ShoppingServiceInterface {
-    Cart cart = new Cart();
+    private final Cart cart;
 
-    @Override
-    public Cart addItemsToCart(ArrayList<Integer> items) {
-        cart.setItems(items);
-        return cart;
+    public ShoppingServiceInterfaceImpl(Cart cart) {
+        this.cart = cart;
     }
 
     @Override
-    public ArrayList<Integer> getItemsListInTheCart() {
-        if (cart.getItems().equals(null)) {
-            throw new RuntimeException("The items list is empty");
-        }
+    public List<Integer> addItems(List<Integer> idlist) {
+        return cart.addItems(idlist);
+    }
+
+    @Override
+    public List<Integer> getItemsListInTheCart() {
+
         return cart.getItems();
     }
 

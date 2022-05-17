@@ -1,33 +1,26 @@
 package pro.sky.shoppingcart.data;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Collections;
+import java.util.List;
 
+@Component
+@SessionScope
 public class Cart {
-    private ArrayList<Integer> items;
+    private final List<Integer> items;
 
     public Cart() {
-        this.items = items;
+        this.items = new ArrayList<>();
     }
 
-    public ArrayList<Integer> getItems() {
-        return items;
+    public List<Integer> addItems(List<Integer> idList) {
+        items.addAll(idList);
+        return idList;
     }
 
-    public void setItems(ArrayList<Integer> items) {
-        this.items = items;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Cart cart = (Cart) obj;
-        return items.equals(cart.items);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(items);
+    public List<Integer> getItems() {
+        return Collections.unmodifiableList(items);
     }
 }
