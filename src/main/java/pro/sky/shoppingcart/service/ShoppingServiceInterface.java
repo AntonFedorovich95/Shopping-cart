@@ -1,10 +1,9 @@
 package pro.sky.shoppingcart.service;
 
-import pro.sky.shoppingcart.data.Cart;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ShoppingServiceInterface {
-    Cart addItemsToCart(ArrayList<Integer> items);
-    ArrayList<Integer> getItemsListInTheCart();
+    List<Integer> addItems(List<Integer> ids);
+    List<Integer> getItemsListInTheCart();
 }
+
